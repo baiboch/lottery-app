@@ -23,6 +23,10 @@ return [
 ];
 ```
 
+### Create database tables
+
+./yii migrate
+
 ### Console Command
 
 ./yii send-unprocessed-money-gift/proceed 20

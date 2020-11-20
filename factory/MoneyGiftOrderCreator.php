@@ -16,7 +16,7 @@ class MoneyGiftOrderCreator extends GiftOrderCreator implements GiftOrderInterfa
         $order->status = 0;
         $order->type = Order::GIFT_MONEY_CODE;
         $order->is_approved = 0;
-        $order->money = 1000;
+        $order->money = rand(100, 1000);
         $order->user_id = Yii::$app->user->getId();
 
         return $order;

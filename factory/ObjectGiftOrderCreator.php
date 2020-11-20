@@ -16,7 +16,6 @@ class ObjectGiftOrderCreator extends GiftOrderCreator implements GiftOrderInterf
         $order->is_approved = 0;
         $order->gift = 'gift name';
         $order->user_id = Yii::$app->user->getId();
-        $order->save();
 
         return $order;
     }

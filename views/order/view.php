@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\models\Order;
+use yii\helpers\Url;
 
 $this->title = 'View Gift';
 $this->params['breadcrumbs'][] = $this->title;
@@ -19,6 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <p class="lead">You have a gift )))
             <span class="text-uppercase text-primary"><?php echo $order->getOrderName(); ?></span>
         </p>
+
+        <p><a class="btn btn-lg btn-success" href="<?php echo Url::to(['order/execute']); ?>">Try again</a></p>
     </div>
 
     <div class="row">

@@ -15,6 +15,7 @@ class OrderController extends Controller {
 
         $orderCreator = GiftOrderFactory::createRandomGift();
         $order = $orderCreator->createOrder();
+        $order->save();
 
         if ($order) {
             return $this->redirect(Url::to(['order/view', 'order_id' => $order->getId()]));

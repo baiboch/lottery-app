@@ -14,9 +14,8 @@ class PointsGiftOrderCreator extends GiftOrderCreator implements GiftOrderInterf
         $order->status = 0;
         $order->type = Order::GIFT_POINTS_CODE;
         $order->is_approved = 0;
-        $order->points = 100;
+        $order->points = rand(100, 1000);
         $order->user_id = Yii::$app->user->getId();
-        $order->save();
 
         return $order;
     }
