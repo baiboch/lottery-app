@@ -3,7 +3,6 @@
 namespace app\factory;
 
 use app\models\Order;
-use app\models\Transaction;
 
 abstract class GiftOrderCreator
 {

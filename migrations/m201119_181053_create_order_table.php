@@ -19,7 +19,7 @@ class m201119_181053_create_order_table extends Migration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
             'type' => $this->tinyInteger()->notNull(),
-            'money' => $this->decimal(15,2)->notNull()->defaultValue(0),
+            'money' => $this->integer()->notNull()->defaultValue(0),
             'points' => $this->integer()->null(),
             'gift' => $this->string()->null(),
             'status' => $this->tinyInteger(1)->defaultValue(0),

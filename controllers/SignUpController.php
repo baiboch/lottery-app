@@ -3,12 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
 use app\models\form\SignUpForm;
-use app\models\User;
 
 class SignUpController extends Controller {
 

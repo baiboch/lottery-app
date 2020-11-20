@@ -2,9 +2,9 @@
 
 namespace app\factory;
 
-use app\models\Transaction;
-use app\strategy\GiftOrderInterface;
 use Yii;
+use app\strategy\GiftOrderInterface;
+use app\models\Transaction;
 use app\models\Order;
 
 class MoneyGiftOrderCreator extends GiftOrderCreator implements GiftOrderInterface

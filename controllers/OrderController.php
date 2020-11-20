@@ -2,17 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\form\ViewOrderForm;
 use Yii;
-use yii\helpers\Url;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\User;
-use app\models\Order;
+use yii\helpers\Url;
 use app\strategy\GiftOrderFactory;
-
+use app\models\Order;
+use app\models\form\ViewOrderForm;
 
 class OrderController extends Controller {
 

@@ -8,7 +8,6 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\form\LoginForm;
-use app\models\User;
 
 class SiteController extends Controller
 {

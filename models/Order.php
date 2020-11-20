@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use app\factory\GiftOrderCreator;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
