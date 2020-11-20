@@ -2,43 +2,40 @@
 
 namespace tests\unit\models;
 
-use app\models\User;
+use app\factory\MoneyGiftOrderCreator;
+use app\models\Order;
 
 class UserTest extends \Codeception\Test\Unit
 {
-    public function testFindUserById()
-    {
-        expect_that($user = User::findIdentity(100));
-        expect($user->username)->equals('admin');
-
-        expect_not(User::findIdentity(999));
-    }
-
-    public function testFindUserByAccessToken()
-    {
-        expect_that($user = User::findIdentityByAccessToken('100-token'));
-        expect($user->username)->equals('admin');
-
-        expect_not(User::findIdentityByAccessToken('non-existing'));        
-    }
-
-    public function testFindUserByUsername()
-    {
-        expect_that($user = User::findByUsername('admin'));
-        expect_not(User::findByUsername('not-admin'));
-    }
-
     /**
-     * @depends testFindUserByUsername
+     * @var Order $orderMock
      */
-    public function testValidateUser($user)
+    private $orderMock;
+
+    public function testConvertMoneyToPoints()
     {
-        $user = User::findByUsername('admin');
-        expect_that($user->validateAuthKey('test100key'));
-        expect_not($user->validateAuthKey('test102key'));
+        /** @var Order $model */
+        $this->orderMock = $this->getMockBuilder(Order::class)
+            ->setMethods(['save', 'attributes'])
+            ->getMock();
 
-        expect_that($user->validatePassword('admin'));
-        expect_not($user->validatePassword('123456'));        
+        $this->orderMock->method('save')->willReturn(true);
+        $this->orderMock->method('attributes')->willReturn([
+            'money',
+            'points',
+            'convert_to_points'
+        ]);
+
+        $this->orderMock->money = 100;
+
+        $orderCreator = new MoneyGiftOrderCreator();
+        $orderCreator->setOrder($this->orderMock);
+        $this->orderMock = $orderCreator->convertToPoints();
+
+        echo $this->orderMock->points . "adasdas\n";
+        echo $this->orderMock->money;
+
+        expect($this->orderMock->points)->equals(150);
+        expect($this->orderMock->convert_to_points)->equals(1);
     }
-
 }
