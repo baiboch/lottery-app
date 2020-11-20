@@ -25,6 +25,7 @@ class Order extends ActiveRecord {
 
     const ORDER_APPROVED = 1;
     const ORDER_PROCESSED = 1;
+    const ORDER_NOT_PROCESSED = 0;
 
     const CONVERT_TO_POINTS = 1;
 
