@@ -20,6 +20,7 @@ class m201119_190045_create_transaction_table extends Migration
             'user_id' => $this->integer()->notNull(),
             'order_id' => $this->integer()->notNull(),
             'type' => $this->tinyInteger()->notNull(),
+            'name' => $this->string()->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);

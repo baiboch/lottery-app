@@ -2,14 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\SignUpForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\form\SignUpForm;
 use app\models\User;
 
 class SignUpController extends Controller {

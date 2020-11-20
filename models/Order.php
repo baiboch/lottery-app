@@ -2,11 +2,9 @@
 
 namespace app\models;
 
-use Yii;
-use yii\base\NotSupportedException;
+use app\factory\GiftOrderCreator;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
 
 /**
  * Order model
@@ -25,26 +23,44 @@ use yii\web\IdentityInterface;
  */
 class Order extends ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
+    const ORDER_APPROVED = 1;
+    const ORDER_PROCESSED = 1;
+
+    const CONVERT_TO_POINTS = 1;
+
+    const GIFT_MONEY_CODE = 1;
+    const GIFT_POINTS_CODE = 2;
+    const GIFT_OBJECT_CODE = 3;
+
+    const GIFT_MONEY_LABEL = 'money';
+    const GIFT_POINTS_LABEL = 'points';
+    const GIFT_OBJECT_LABEL = 'object';
+
+    private $orderNameList = [
+        self::GIFT_MONEY_CODE => self::GIFT_MONEY_LABEL,
+        self::GIFT_POINTS_CODE => self::GIFT_POINTS_LABEL,
+        self::GIFT_OBJECT_CODE => self::GIFT_OBJECT_LABEL,
+    ];
+
     public static function tableName() {
         return '{{%order}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function behaviors() {
         return [
             TimestampBehavior::className(),
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getId() {
         return $this->getPrimaryKey();
+    }
+
+    public function getType() {
+        return $this->type;
+    }
+
+    public function getOrderName() {
+        return $this->orderNameList[$this->getType()];
     }
 }

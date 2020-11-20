@@ -14,12 +14,18 @@ $this->title = 'Lottery Application';
         </div>
     <?php endif; ?>
 
+    <?php if (Yii::$app->session->hasFlash('newOrderCreated')): ?>
+        <div class="alert alert-success">
+            Your gift created.
+        </div>
+    <?php endif; ?>
+
     <?php if(!Yii::$app->user->isGuest): ?>
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 
         <p class="lead">You have the opportunity to receive a gift )))</p>
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get Gift ...</a></p>
+        <p><a class="btn btn-lg btn-success" href="<?php echo Url::to(['order/execute']); ?>">Get Gift ...</a></p>
     </div>
     <?php else: ?>
         <div class="jumbotron">
